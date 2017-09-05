@@ -1,0 +1,247 @@
+➜  sept42017 mkdir w1d1 && cd $_
+➜  w1d1 git init
+Initialized empty Git repository in /Users/don/dev/lighthouse/cohorts/2017/sept42017/w1d1/.git/
+➜  w1d1 git:(master) ls
+➜  w1d1 git:(master) ls -al
+total 0
+drwxr-xr-x   3 don  staff  102  4 Sep 15:55 .
+drwxr-xr-x   3 don  staff  102  4 Sep 15:53 ..
+drwxr-xr-x  10 don  staff  340  4 Sep 15:56 .git
+➜  w1d1 git:(master) git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+➜  w1d1 git:(master) vim index.html
+➜  w1d1 git:(master) ✗ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+  index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  w1d1 git:(master) ✗ git add index.html
+➜  w1d1 git:(master) ✗ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+  new file:   index.html
+
+➜  w1d1 git:(master) ✗ git commit -m "Adding index.html file"
+[master (root-commit) ed3fc81] Adding index.html file
+ 1 file changed, 9 insertions(+)
+ create mode 100644 index.html
+➜  w1d1 git:(master) git log
+➜  w1d1 git:(master) vim index.html
+➜  w1d1 git:(master) vim index.html
+➜  w1d1 git:(master) ✗ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  w1d1 git:(master) ✗ vim index.html
+➜  w1d1 git:(master) ✗ git status    
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  w1d1 git:(master) ✗ git commit -am "Added more content to index.html"
+[master c6e19e1] Added more content to index.html
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+➜  w1d1 git:(master) vim index.html 
+➜  w1d1 git:(master) git status
+On branch master
+nothing to commit, working tree clean
+➜  w1d1 git:(master) git checkout ed3fc81
+Note: checking out 'ed3fc81'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at ed3fc81... Adding index.html file
+➜  w1d1 git:(ed3fc81) vim index.html
+➜  w1d1 git:(ed3fc81) git checkout master
+Previous HEAD position was ed3fc81... Adding index.html file
+Switched to branch 'master'
+➜  w1d1 git:(master) vim index.html
+➜  w1d1 git:(master) git checkout -b feature/add_css
+Switched to a new branch 'feature/add_css'
+➜  w1d1 git:(feature/add_css) ls
+index.html
+➜  w1d1 git:(feature/add_css) vim style.css
+➜  w1d1 git:(feature/add_css) ✗ git status
+On branch feature/add_css
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+  style.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  w1d1 git:(feature/add_css) ✗ git add style.css
+➜  w1d1 git:(feature/add_css) ✗ vim index.html
+➜  w1d1 git:(feature/add_css) ✗ git status
+On branch feature/add_css
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+  new file:   style.css
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   index.html
+
+➜  w1d1 git:(feature/add_css) ✗ git commit -m "Added style.css"
+[feature/add_css 01f7da0] Added style.css
+ 1 file changed, 4 insertions(+)
+ create mode 100644 style.css
+➜  w1d1 git:(feature/add_css) ✗ git status
+On branch feature/add_css
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  w1d1 git:(feature/add_css) ✗ git add index.html
+➜  w1d1 git:(feature/add_css) ✗ git commit -m "Linked style.css in head"
+[feature/add_css 9988582] Linked style.css in head
+ 1 file changed, 1 insertion(+)
+➜  w1d1 git:(feature/add_css) git status
+On branch feature/add_css
+nothing to commit, working tree clean
+➜  w1d1 git:(feature/add_css) vim index.html
+➜  w1d1 git:(feature/add_css) ls
+index.html style.css
+➜  w1d1 git:(feature/add_css) git checkout master
+Switched to branch 'master'
+➜  w1d1 git:(master) ls
+index.html
+➜  w1d1 git:(master) vim index.html
+➜  w1d1 git:(master) git branch
+  feature/add_css
+* master
+➜  w1d1 git:(master) git merge feature/add_css 
+Updating c6e19e1..9988582
+Fast-forward
+ index.html | 1 +
+ style.css  | 4 ++++
+ 2 files changed, 5 insertions(+)
+ create mode 100644 style.css
+➜  w1d1 git:(master) ls
+index.html style.css
+➜  w1d1 git:(master) vim index.html 
+➜  w1d1 git:(master) git checkout feature/add_css 
+Switched to branch 'feature/add_css'
+➜  w1d1 git:(feature/add_css) s
+zsh: command not found: s
+➜  w1d1 git:(feature/add_css) ls
+index.html style.css
+➜  w1d1 git:(feature/add_css) git checkout master
+Switched to branch 'master'
+➜  w1d1 git:(master) git remote add origin git@github.com:donburks/git_sept42017.git
+➜  w1d1 git:(master) git push -u origin master
+Counting objects: 12, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (12/12), 1.17 KiB | 0 bytes/s, done.
+Total 12 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), done.
+To github.com:donburks/git_sept42017.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+➜  w1d1 git:(master) git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+➜  w1d1 git:(master) vim index.html
+➜  w1d1 git:(master) git pull origin master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:donburks/git_sept42017
+ * branch            master     -> FETCH_HEAD
+   9988582..7ceec35  master     -> origin/master
+Updating 9988582..7ceec35
+Fast-forward
+ index.html | 3 +++
+ 1 file changed, 3 insertions(+)
+➜  w1d1 git:(master) vim index.html
+➜  w1d1 git:(master) vim index.html                 
+➜  w1d1 git:(master) ✗ git commit -am "Added better content"
+[master 12fd731] Added better content
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+➜  w1d1 git:(master) git push origin master
+To github.com:donburks/git_sept42017.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:donburks/git_sept42017.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+➜  w1d1 git:(master) git pull origin master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:donburks/git_sept42017
+ * branch            master     -> FETCH_HEAD
+   7ceec35..46e5c96  master     -> origin/master
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.
+➜  w1d1 git:(master) ✗ vim index.html
+➜  w1d1 git:(master) ✗ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+  both modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  w1d1 git:(master) ✗ git add index.html
+➜  w1d1 git:(master) git commit -m "Resolved conflict"
+[master 74c8067] Resolved conflict
+➜  w1d1 git:(master) git push origin master
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 463 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To github.com:donburks/git_sept42017.git
+   46e5c96..74c8067  master -> master
